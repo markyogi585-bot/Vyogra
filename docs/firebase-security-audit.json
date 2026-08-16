@@ -1,0 +1,5 @@
+{
+  "score": 5,
+  "summary": "Static audit of the VOYAGR Firebase rule set and token bridge. Traveler profiles are owner-scoped with immutable UID, role, and creation timestamp; support requests are create-only and owner-linked; booking, invoice, payment, and admin documents are denied direct Firestore access and remain behind verified server procedures. Firebase administrator roles are accepted only from a verified Firebase ID-token custom claim, never from a client profile document.",
+  "findings": []
+}

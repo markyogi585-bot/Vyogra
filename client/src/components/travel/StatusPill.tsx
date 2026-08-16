@@ -1,0 +1,2 @@
+import type { TripState } from "@/lib/travelTypes";
+export function StatusPill({ status }: { status: TripState | "paid" | "pending" | "protected" }) { const labels: Record<string, string> = { upcoming: "Upcoming", active: "On the road", completed: "Completed", cancelled: "Cancelled", paid: "Paid", pending: "Pending", protected: "Protected" }; return <span className={`status-pill ${status}`}>{labels[status]}</span>; }

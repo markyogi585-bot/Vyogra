@@ -1,0 +1,4 @@
+import { Check, Tag } from "lucide-react";
+import { useState } from "react";
+import { applyCoupon } from "@/lib/commerce";
+export function CouponField({ subtotal, onApply }: { subtotal: number; onApply: (discount: number, code?: string) => void }) { const [code, setCode] = useState(""); const [message, setMessage] = useState(""); const [valid, setValid] = useState(false); const validate = () => { const result = applyCoupon(code, subtotal); setMessage(result.message); setValid(result.valid); onApply(result.discount, result.valid ? result.code : undefined); }; return <div className={`commerce-coupon ${valid ? "applied" : ""}`}><Tag size={17} /><input value={code} onChange={(event) => { setCode(event.target.value); setMessage(""); setValid(false); }} placeholder="Add a coupon or travel code" /><button onClick={validate}>{valid ? <Check size={15} /> : "Apply"}</button>{message && <small>{message}</small>}</div>; }

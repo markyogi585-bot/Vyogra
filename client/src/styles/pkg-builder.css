@@ -1,0 +1,533 @@
+/* ===================================================================
+   Package Builder CSS — Monsoon Modern Design
+   Admin package creation 3-step form
+   =================================================================== */
+
+.pkg-builder-page {
+  min-height: 100vh;
+  background: var(--color-paper, #faf7f3);
+  font-family: var(--font-sans, "Manrope", system-ui, sans-serif);
+}
+
+.pkg-builder-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-border, rgba(0,0,0,0.08));
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.pkg-builder-header a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--color-ink, #2d2d2d);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.pkg-builder-header a:hover { opacity: 1; }
+
+.pkg-builder-steps {
+  display: flex;
+  gap: 6px;
+  margin: 0 auto;
+}
+
+.pkg-step {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border, rgba(0,0,0,0.12));
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-ink, #2d2d2d);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pkg-step.active {
+  border-color: var(--color-brand, #f06a3a);
+  background: var(--color-brand, #f06a3a);
+  color: white;
+}
+.pkg-step.done {
+  border-color: var(--color-sage, #5a9e8f);
+  background: var(--color-sage, #5a9e8f);
+  color: white;
+}
+
+.pkg-builder-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 0;
+  min-height: calc(100vh - 65px);
+}
+
+@media (max-width: 900px) {
+  .pkg-builder-layout { grid-template-columns: 1fr; }
+}
+
+.pkg-builder-form {
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.pkg-builder-form h1 {
+  font-family: var(--font-display, "DM Serif Display", Georgia, serif);
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.1;
+  margin: 8px 0 32px;
+  color: var(--color-ink, #2d2d2d);
+}
+
+.pkg-field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.pkg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink, #2d2d2d);
+  letter-spacing: 0.04em;
+}
+
+.pkg-field.full { grid-column: 1 / -1; }
+
+.pkg-field input,
+.pkg-field select,
+.pkg-field textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--color-border, rgba(0,0,0,0.12));
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--color-ink, #2d2d2d);
+  background: white;
+  transition: border-color 0.15s;
+  box-sizing: border-box;
+}
+.pkg-field input:focus,
+.pkg-field select:focus,
+.pkg-field textarea:focus {
+  outline: none;
+  border-color: var(--color-brand, #f06a3a);
+}
+
+.pkg-field-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.pkg-field-icon-wrap svg {
+  position: absolute;
+  left: 12px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.pkg-field-icon-wrap input {
+  padding-left: 36px;
+}
+
+/* ── Image Section ─────────────────────────────────────────────── */
+.pkg-image-section {
+  margin-top: 28px;
+}
+.pkg-image-preview {
+  margin: 12px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 180px;
+}
+.pkg-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pkg-image-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.pkg-image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.pkg-image-option {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.15s;
+}
+.pkg-image-option:hover { border-color: var(--color-brand, #f06a3a); }
+.pkg-image-option.selected { border-color: var(--color-sage, #5a9e8f); }
+.pkg-image-option img { width: 100%; height: 80px; object-fit: cover; }
+.pkg-image-option span { font-size: 11px; padding: 4px 6px; text-align: center; }
+
+/* ── Lists (highlights/inclusions/exclusions) ─────────────────── */
+.pkg-list-section {
+  margin-bottom: 24px;
+}
+.pkg-list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.pkg-list-head button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-brand, #f06a3a);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.pkg-list-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.pkg-list-row input {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1.5px solid var(--color-border, rgba(0,0,0,0.1));
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: inherit;
+  background: white;
+}
+.pkg-list-row input:focus {
+  outline: none;
+  border-color: var(--color-brand, #f06a3a);
+}
+.pkg-list-row > button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e05;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 6px;
+}
+.pkg-list-row > button:hover { background: rgba(238, 0, 85, 0.1); }
+
+/* ── Itinerary ─────────────────────────────────────────────────── */
+.pkg-itin-list { display: flex; flex-direction: column; gap: 12px; }
+.pkg-itin-day {
+  background: white;
+  border: 1.5px solid var(--color-border, rgba(0,0,0,0.1));
+  border-radius: 10px;
+  padding: 16px;
+}
+.pkg-itin-day-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.pkg-itin-day-head span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-brand, #f06a3a);
+}
+.pkg-itin-day-head button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e05;
+  padding: 4px;
+}
+.pkg-itin-day input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border: 1.5px solid var(--color-border, rgba(0,0,0,0.1));
+  border-radius: 7px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.pkg-itin-day input:focus { outline: none; border-color: var(--color-brand, #f06a3a); }
+.pkg-itin-day textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid var(--color-border, rgba(0,0,0,0.1));
+  border-radius: 7px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+  min-height: 60px;
+}
+.pkg-itin-day textarea:focus { outline: none; border-color: var(--color-brand, #f06a3a); }
+.pkg-add-day-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border: 2px dashed var(--color-border, rgba(0,0,0,0.15));
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-ink, #2d2d2d);
+  opacity: 0.6;
+  transition: all 0.15s;
+}
+.pkg-add-day-btn:hover { opacity: 1; border-color: var(--color-brand, #f06a3a); color: var(--color-brand, #f06a3a); }
+
+/* ── Status & Actions ─────────────────────────────────────────── */
+.pkg-status-row { margin: 24px 0; }
+.pkg-status-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.pkg-status-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pkg-builder-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 32px;
+  align-items: center;
+}
+
+.pkg-primary-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--color-brand, #f06a3a);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pkg-primary-btn:hover { background: #d95c30; transform: translateY(-1px); }
+.pkg-primary-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.pkg-secondary-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: white;
+  color: var(--color-ink, #2d2d2d);
+  border: 1.5px solid var(--color-border, rgba(0,0,0,0.15));
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.pkg-secondary-btn:hover { border-color: var(--color-ink, #2d2d2d); }
+.pkg-secondary-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.pkg-outline-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: none;
+  color: var(--color-ink, #2d2d2d);
+  border: 1.5px solid var(--color-border, rgba(0,0,0,0.15));
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.pkg-outline-btn:hover { border-color: var(--color-ink, #2d2d2d); }
+
+/* ── Preview Panel ─────────────────────────────────────────────── */
+.pkg-builder-preview {
+  border-left: 1px solid var(--color-border, rgba(0,0,0,0.08));
+  padding: 32px 24px;
+  background: white;
+  position: sticky;
+  top: 65px;
+  max-height: calc(100vh - 65px);
+  overflow-y: auto;
+}
+
+.pkg-preview-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1.5px solid var(--color-border, rgba(0,0,0,0.08));
+  margin: 12px 0;
+}
+
+.pkg-preview-img {
+  position: relative;
+  height: 160px;
+}
+.pkg-preview-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pkg-preview-img span {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: white;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.pkg-preview-img-placeholder {
+  height: 160px;
+  background: var(--color-paper, #faf7f3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3;
+}
+
+.pkg-preview-body {
+  padding: 16px;
+}
+.pkg-preview-body small {
+  font-size: 12px;
+  opacity: 0.6;
+}
+.pkg-preview-body h3 {
+  margin: 6px 0 4px;
+  font-family: var(--font-display, "DM Serif Display", Georgia, serif);
+  font-size: 18px;
+}
+.pkg-preview-body p {
+  font-size: 13px;
+  opacity: 0.6;
+  margin: 0 0 12px;
+}
+.pkg-preview-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pkg-preview-price strong { font-size: 15px; color: var(--color-brand, #f06a3a); }
+
+.pkg-status-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.pkg-status-badge.live { background: #e6f4f1; color: #2d7a6a; }
+.pkg-status-badge.draft { background: rgba(0,0,0,0.06); color: #666; }
+
+.pkg-preview-note {
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.6;
+  margin: 0;
+}
+
+/* ── Success Screen ─────────────────────────────────────────────── */
+.pkg-builder-success {
+  max-width: 560px;
+  margin: 80px auto;
+  padding: 48px 40px;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  border: 1.5px solid var(--color-border, rgba(0,0,0,0.08));
+}
+.pkg-builder-success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-sage, #5a9e8f);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+.pkg-builder-success h1 {
+  font-family: var(--font-display, "DM Serif Display", Georgia, serif);
+  font-size: 36px;
+  margin: 10px 0;
+}
+.pkg-builder-success p {
+  font-size: 15px;
+  opacity: 0.7;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+.pkg-builder-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.pkg-builder-success-actions button,
+.pkg-builder-success-actions a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.pkg-builder-success-actions button {
+  background: var(--color-brand, #f06a3a);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.pkg-builder-success-actions a {
+  background: none;
+  border: 1.5px solid var(--color-border, rgba(0,0,0,0.15));
+  color: var(--color-ink, #2d2d2d);
+}
+.pkg-builder-success-actions a:hover,
+.pkg-builder-success-actions button:hover { opacity: 0.85; }

@@ -1,0 +1,3 @@
+import { Images, PlayCircle } from "lucide-react";
+const media = ["/manus-storage/voyagr-goa-fallback_536e7aa7.jpg", "/manus-storage/voyagr-hero-reference_2564062a.jpg", "/manus-storage/voyagr-munnar-fallback_e5355d45.webp"];
+export function TripMediaGallery() { return <section className="trip-media-gallery"><div><span>FROM THE ROAD</span><h2>Today’s field notes.</h2><button><Images size={16} /> View all</button></div><div className="trip-media-grid">{media.map((url, index) => <figure key={url}><img src={url} alt="Trip landscape update" />{index === 0 && <figcaption><PlayCircle size={17} /> 0:18 host update</figcaption>}</figure>)}</div></section>; }

@@ -1,0 +1,20 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "auth": {
+    "authorizedDomains": [
+      "localhost",
+      "voyagrtrav-hkw9kgsa.manus.space"
+    ],
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "VOYAGR"
+      }
+    }
+  }
+}

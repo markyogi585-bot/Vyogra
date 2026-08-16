@@ -1,0 +1,3 @@
+export type BookingTotals = { subtotal: number; addOnTotal: number; walletApplied: number; grandTotal: number; };
+export function calculateBookingTotals(basePrice: number, travelerCount: number, addOnTotal = 0, walletBalance = 0): BookingTotals { const subtotal = Math.max(0, basePrice) * Math.max(1, travelerCount); const safeAddOns = Math.max(0, addOnTotal); const walletApplied = Math.min(Math.max(0, walletBalance), subtotal + safeAddOns); return { subtotal, addOnTotal: safeAddOns, walletApplied, grandTotal: subtotal + safeAddOns - walletApplied }; }
+export function bookingCode(now = new Date(), random = Math.floor(Math.random() * 9000) + 1000) { return `VYG-${now.getUTCFullYear()}-${String(random)}`; }

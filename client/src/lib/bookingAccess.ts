@@ -1,0 +1,3 @@
+export const DEMO_BOOKING = { code: "VYG-2026-08456", contactSuffix: "6264", traveler: "Aarav Mehta", packageName: "Goa, at your own pace", travelDates: "18–22 September 2026", party: "2 adults · 1 child", status: "confirmed", invoiceNumber: "INV-VYG-2608456", amount: "₹37,998", host: "Ananya Menon" } as const;
+export function normaliseBookingCode(value: string) { return value.trim().toUpperCase().replace(/\s+/g, ""); }
+export function canOpenBooking(code: string, contact: string) { return normaliseBookingCode(code) === DEMO_BOOKING.code && contact.replace(/\D/g, "").endsWith(DEMO_BOOKING.contactSuffix); }

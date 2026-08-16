@@ -1,0 +1,1 @@
+ALTER TABLE `mediaAssets` MODIFY COLUMN `storageKey` varchar(512) NOT NULL;

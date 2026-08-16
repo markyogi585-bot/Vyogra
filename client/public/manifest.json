@@ -1,0 +1,11 @@
+{
+  "name": "VOYAGR — Make room for a little elsewhere",
+  "short_name": "VOYAGR",
+  "description": "Thoughtful routes, local texture, and the kind of trips you keep talking about.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f0e8",
+  "theme_color": "#183a37",
+  "orientation": "portrait-primary",
+  "icons": [{ "src": "/manus-storage/voyagr-mark_f07df447.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" }]
+}

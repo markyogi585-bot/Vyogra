@@ -1,0 +1,4 @@
+import { Download, FileText, LockKeyhole } from "lucide-react";
+import { Link } from "wouter";
+const files = [{ name: "Yatra e-Ticket & Receipt", meta: "PDF · Issued Official" }, { name: "Day-by-day itinerary", meta: "PDF · Updated today" }, { name: "Stay & Chauffeur confirmation", meta: "PDF · Verified" }];
+export function DocumentList({ bookingCode = "VYG-2026-08456" }: { bookingCode?: string }) { return <section className="trip-documents"><div className="document-head"><div><span className="admin-overline">TRIP VAULT</span><h3>Tickets & documents</h3></div><span><LockKeyhole size={14} /> Private</span></div>{files.map((file, index) => <div className="document-row" key={file.name}><FileText size={18} /><div><b>{file.name}</b><span>{file.meta}</span></div><Link href={index === 0 ? `/access/${bookingCode}` : `/invoice/${bookingCode}`} aria-label={`Open ${file.name}`}><Download size={16} /></Link></div>)}</section>; }

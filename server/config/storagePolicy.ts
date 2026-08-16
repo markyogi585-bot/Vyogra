@@ -1,0 +1,2 @@
+export const documentUploadPolicy = { allowedMimeTypes: ["application/pdf", "image/jpeg", "image/png", "image/webp"], maxBytes: 10 * 1024 * 1024, privateCategories: ["ticket", "itinerary", "stay_confirmation", "identity_document"] } as const;
+export function canAcceptDocument(mimeType: string, bytes: number) { return documentUploadPolicy.allowedMimeTypes.includes(mimeType as typeof documentUploadPolicy.allowedMimeTypes[number]) && bytes > 0 && bytes <= documentUploadPolicy.maxBytes; }

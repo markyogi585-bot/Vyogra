@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+Allow: /explore
+Allow: /package/
+Allow: /access
+Allow: /support
+Allow: /notifications
+
+# Block admin and private routes
+Disallow: /admin/
+Disallow: /trips
+Disallow: /account
+Disallow: /checkout
+Disallow: /invoice/
+Disallow: /wishlist
+
+# Block API routes
+Disallow: /api/
+Disallow: /trpc/
+
+# Sitemap
+Sitemap: https://voyagr.in/sitemap.xml
+
+# Crawl rate
+Crawl-delay: 10

@@ -1,0 +1,2 @@
+import { ArrowLeft, ShieldCheck } from "lucide-react";
+export function AdminPageFrame({ eyebrow, title, children }: { eyebrow: string; title: React.ReactNode; children: React.ReactNode }) { return <div className="admin-page-frame"><header className="admin-subpage-header"><a href="/admin/tools"><ArrowLeft size={17} /> Back to command center</a><span><ShieldCheck size={14} /> Role-aware workspace</span></header><div className="admin-subpage-intro"><span className="admin-overline">{eyebrow}</span><h1>{title}</h1></div>{children}</div>; }

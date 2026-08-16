@@ -1,0 +1,57 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "status": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['state', 'lastChanged'])",
+        "state": {
+          ".validate": "newData.val() === 'online' || newData.val() === 'offline'"
+        },
+        "lastChanged": {
+          ".validate": "newData.isNumber()"
+        }
+      }
+    },
+
+    "liveTrips": {
+      "$tripId": {
+        ".read": "auth != null",
+        ".write": "auth != null && (root.child('travelerProfiles').child(auth.uid).child('role').val() === 'admin' || root.child('travelerProfiles').child(auth.uid).child('role').val() === 'super_admin' || root.child('liveTrips').child($tripId).child('hostUid').val() === auth.uid)",
+        "coordinates": {
+          ".validate": "newData.hasChildren(['lat', 'lng', 'updatedAt'])"
+        }
+      }
+    },
+
+    "chats": {
+      "$ticketId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "messages": {
+          "$messageId": {
+            ".validate": "newData.hasChildren(['senderId', 'text', 'timestamp']) && newData.child('senderId').val() === auth.uid"
+          }
+        }
+      }
+    },
+
+    "broadcasts": {
+      ".read": true,
+      ".write": "auth != null && (root.child('travelerProfiles').child(auth.uid).child('role').val() === 'admin' || root.child('travelerProfiles').child(auth.uid).child('role').val() === 'super_admin')"
+    },
+
+    "systemAlerts": {
+      ".read": true,
+      ".write": "auth != null && (root.child('travelerProfiles').child(auth.uid).child('role').val() === 'admin' || root.child('travelerProfiles').child(auth.uid).child('role').val() === 'super_admin')"
+    },
+
+    "rates": {
+      ".read": true,
+      ".write": "auth != null && (root.child('travelerProfiles').child(auth.uid).child('role').val() === 'admin' || root.child('travelerProfiles').child(auth.uid).child('role').val() === 'super_admin')"
+    }
+  }
+}

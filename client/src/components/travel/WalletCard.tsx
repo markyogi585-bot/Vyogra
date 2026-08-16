@@ -1,0 +1,3 @@
+import { ArrowUpRight, CreditCard, Plus, ShieldCheck } from "lucide-react";
+import { inr } from "@/lib/formatters";
+export function WalletCard() { return <section className="wallet-hero-card"><div className="wallet-hero-top"><div><span className="admin-overline">YATRA REWARDS WALLET</span><h1>{inr(3480)}<small>available balance</small></h1></div><span className="wallet-orb"><CreditCard size={24} /></span></div><p>Travel credits, refunds, and instant booking offsets — in one place.</p><div className="wallet-actions"><button><Plus size={16} /> Add money</button><button><ArrowUpRight size={16} /> Use on a booking</button></div><small className="wallet-protected"><ShieldCheck size={14} /> PCI-ready payment handoff when Razorpay is configured.</small></section>; }
